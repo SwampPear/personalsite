@@ -1,0 +1,9 @@
+:root {
+  --white: #fff
+}
+
+html,
+body {
+  margin: 0;
+  background-color: pink;
+}
