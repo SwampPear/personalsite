@@ -5,9 +5,10 @@
  */
 
 :root {
-  --white: #fef8f2;
+  --white: #f8efe6;
   --black: #171717;
 }
+
 /*
  * =============================================================================
  * Fonts
@@ -42,13 +43,121 @@ body {
   margin: 0;
 }
 
-nav {
-  height: 4rem;
-  width: 100vw;
+/*
+ * =============================================================================
+ * Nav
+ * =============================================================================
+ */
+
+.nav {
+  display: flex;
+  height: 2.5rem;
+  padding: 3rem 8rem 0 8rem;
+  flex: 1;
+}
+
+.nav__link__container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.nav__icon__link,
+.nav__link {
+  height: fit-content;
+  margin-right: 1.5rem;
+}
+
+.nav__link__work,
+.nav__link__experience,
+.nav__link__contact,
+.nav__icon__link__icon {
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 
 .nav__link {
   color: var(--black);
   font-family: 'IBM Plex Mono';
+  font-size: 1.125rem;
   text-decoration: none;
+  opacity: 0;
+}
+
+@keyframes navIconLinkIconAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav__icon__link__icon {
+  animation-name: navIconLinkIconAnim;
+  height: 2.5rem;
+}
+
+@keyframes navLinkWorkAnim {
+  5% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav__link__work {
+  animation-name: navLinkWorkAnim;
+}
+
+@keyframes navLinkExperienceAnim {
+  10% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav__link__experience {
+  animation-name: navLinkExperienceAnim;
+}
+
+@keyframes navLinkContactAnim {
+  15% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav__link__contact {
+  animation-name: navLinkContactAnim;
 }
