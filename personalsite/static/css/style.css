@@ -7,6 +7,7 @@
 :root {
   --white: #f8efe6;
   --black: #171717;
+  --black-hover: #4e4e4e;
 }
 
 /*
@@ -52,37 +53,52 @@ body {
 .nav {
   display: flex;
   height: 2.5rem;
-  padding: 3rem 8rem 0 8rem;
-  flex: 1;
+  padding: 3rem 9rem 0 9rem;
+}
+
+.nav__link__container,
+.nav__action__container {
+  align-items: center;
+  display: flex;
+  flex: auto;
 }
 
 .nav__link__container {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  justify-content: left;
 }
+
+.nav__action__container {
+  justify-content: right;
+}
+
 
 .nav__icon__link,
 .nav__link {
-  height: fit-content;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   margin-right: 1.5rem;
+  padding: 0;
 }
 
 .nav__link__work,
 .nav__link__experience,
 .nav__link__contact,
-.nav__icon__link__icon {
-  animation-duration: 3s;
+.nav__icon__link__icon,
+.nav__darkmode-button {
+  animation-duration: 2.5s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 }
 
 .nav__link {
   color: var(--black);
+  display: block;
   font-family: 'IBM Plex Mono';
   font-size: 1.125rem;
   text-decoration: none;
   opacity: 0;
+  will-change: transform;
 }
 
 @keyframes navIconLinkIconAnim {
@@ -96,7 +112,6 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -116,7 +131,6 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -135,7 +149,6 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -154,10 +167,87 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
 .nav__link__contact {
   animation-name: navLinkContactAnim;
 }
+
+@keyframes navDarkmodeButtonAnim {
+  15% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.nav__darkmode-button {
+  animation-name: navDarkmodeButtonAnim;
+  background-color: transparent;
+  border: none;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  opacity: 0;
+  padding: 0;
+  width: 4rem;
+}
+
+.nav__darkmode-button__icon {
+  fill: var(--black);
+  height: 2.5rem;
+  transform-origin: center;
+  transition: .2s ease-in-out;
+  will-change: transform;
+}
+
+.nav__darkmode-button__icon:hover {
+  fill: var(--black-hover);
+  transform: translateY(-.2rem);
+}
+
+@keyframes darkmodeButtonToDark {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.nav__darkmode-button__icon__to-dark {
+  animation-duration: .3s;
+  animation-name: darkmodeButtonToDark;
+  animation-timing-function: ease-in-out;
+}
+
+.nav__link {
+  transition: .2s ease-in-out;
+}
+
+.nav__link:hover {
+  color: var(--black-hover);
+}
+
+.nav__link:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px var(--black);  
+  border-radius: 1px;
+  transform: scaleX(0);  
+  transition: transform .2s ease-in-out;
+}
+
+.nav__link:hover:after { 
+  border-bottom: solid 2px var(--black-hover);
+  transform: scaleX(1); 
+}
+
+
