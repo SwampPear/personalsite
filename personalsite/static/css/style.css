@@ -7,7 +7,7 @@
 :root {
   --white: #f8efe6;
   --black: #171717;
-  --black-hover: #4e4e4e;
+  --black-hover: #404040;
 }
 
 /*
@@ -81,7 +81,7 @@ body {
   padding: 0;
 }
 
-.nav__link__work,
+.nav__link__about,
 .nav__link__experience,
 .nav__link__contact,
 .nav__icon__link__icon,
@@ -101,6 +101,29 @@ body {
   will-change: transform;
 }
 
+.nav__link {
+  transition: .2s ease-in-out;
+}
+
+.nav__link:hover {
+  color: var(--black-hover);
+}
+
+.nav__link:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px var(--black);  
+  border-radius: 1px;
+  transform: scaleX(0);  
+  transition: transform .2s ease-in-out;
+}
+
+.nav__link:hover:after { 
+  border-bottom: solid 2px var(--black-hover);
+  transform: scaleX(1); 
+}
+
+
 @keyframes navIconLinkIconAnim {
   0% {
     opacity: 0;
@@ -117,10 +140,10 @@ body {
 
 .nav__icon__link__icon {
   animation-name: navIconLinkIconAnim;
-  height: 2.5rem;
+  height: 2rem;
 }
 
-@keyframes navLinkWorkAnim {
+@keyframes navLinkAboutAnim {
   5% {
     opacity: 0;
     transform: translateY(-1rem);
@@ -134,8 +157,8 @@ body {
   }
 }
 
-.nav__link__work {
-  animation-name: navLinkWorkAnim;
+.nav__link__about {
+  animation-name: navLinkAboutAnim;
 }
 
 @keyframes navLinkExperienceAnim {
@@ -202,52 +225,100 @@ body {
 
 .nav__darkmode-button__icon {
   fill: var(--black);
+  stroke: var(--black);
   height: 2.5rem;
-  transform-origin: center;
-  transition: .2s ease-in-out;
+  transition: .1s ease-in-out;
   will-change: transform;
 }
 
 .nav__darkmode-button__icon:hover {
   fill: var(--black-hover);
-  transform: translateY(-.2rem);
+  stroke: var(--black-hover);
 }
 
-@keyframes darkmodeButtonToDark {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__circle {
+  transform: scale(1.2);
 }
 
-.nav__darkmode-button__icon__to-dark {
-  animation-duration: .3s;
-  animation-name: darkmodeButtonToDark;
-  animation-timing-function: ease-in-out;
-}
-
-.nav__link {
+.nav__darkmode-button__icon__circle {
+  stroke-width: 0;
+  transform-origin: center;
   transition: .2s ease-in-out;
 }
 
-.nav__link:hover {
-  color: var(--black-hover);
+.nav__darkmode-button__icon__ray1,
+.nav__darkmode-button__icon__ray2,
+.nav__darkmode-button__icon__ray3,
+.nav__darkmode-button__icon__ray4,
+.nav__darkmode-button__icon__ray5,
+.nav__darkmode-button__icon__ray6,
+.nav__darkmode-button__icon__ray7,
+.nav__darkmode-button__icon__ray8 {
+  stroke-linecap: round;
+  stroke-width: 4px;
+  transition: .2s ease-in-out;
 }
 
-.nav__link:after {
-  display:block;
-  content: '';
-  border-bottom: solid 2px var(--black);  
-  border-radius: 1px;
-  transform: scaleX(0);  
-  transition: transform .2s ease-in-out;
+.nav__darkmode-button__icon__ray1 {
+  d: path("M5 50 L17 50")
 }
 
-.nav__link:hover:after { 
-  border-bottom: solid 2px var(--black-hover);
-  transform: scaleX(1); 
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray1 {
+  d: path("M5 50 L9 50")
 }
 
+.nav__darkmode-button__icon__ray2 {
+  d: path("M50 5 L50 17")
+}
 
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray2 {
+  d: path("M50 5 L50 9")
+}
+
+.nav__darkmode-button__icon__ray3 {
+  d: path("M95 50 L83 50")
+}
+
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray3 {
+  d: path("M95 50 L91 50")
+}
+
+.nav__darkmode-button__icon__ray4 {
+  d: path("M50 95 L50 83")
+}
+
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray4 {
+  d: path("M50 95 L50 91")
+}
+
+.nav__darkmode-button__icon__ray5 {
+  d: path("M18.18 18.18 L25.35 25.35")
+}
+
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray5 {
+  d: path("M18.18 18.18 L20.25 20.25")
+}
+
+.nav__darkmode-button__icon__ray6 {
+  d: path("M81.82 18.18 L74.65 25.35")
+}
+
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray6 {
+  d: path("M81.82 18.18 L79.75 20.25")
+}
+
+.nav__darkmode-button__icon__ray7 {
+  d: path("M81.82 81.82 L74.65 74.65")
+}
+
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray7 {
+  d: path("M81.82 81.82 L79.75 79.75")
+}
+
+.nav__darkmode-button__icon__ray8 {
+  d: path("M18.18 81.82 L25.35 74.65")
+}
+
+.nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray8 {
+  d: path("M18.18 81.82 L20.25 79.75")
+}
