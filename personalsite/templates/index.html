@@ -9,5 +9,37 @@
   <body>
     {% include 'partials/nav.html' %}
     {% include 'partials/welcome_scroll_graphic.html' %}
+    <script>
+      let darkmode = false 
+
+      const darkmodeButton = document.querySelector('.nav__darkmode-button')
+
+      const fromDark = () => {
+        darkmode = false
+
+        document.body.classList.remove('body-to-dark')
+        document.body.classList.add('body-from-dark')
+        document.querySelectorAll('.nav__link').forEach((el) => {
+          el.classList.remove('nav__link__to-dark')
+          el.classList.add('nav__link__from-dark')
+        })
+      }
+
+      const toDark = () => {
+        darkmode = true
+
+        document.body.classList.remove('body-from-dark')
+        document.body.classList.add('body-to-dark')
+        document.querySelectorAll('.nav__link').forEach((el) => {
+          el.classList.remove('nav__link__from-dark')
+          el.classList.add('nav__link__to-dark')
+        })
+      }
+
+      darkmodeButton.addEventListener('click', () => {
+        darkmode ? fromDark() : toDark()
+        
+      })
+    </script>
   </body>
 </html>
