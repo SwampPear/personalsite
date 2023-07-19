@@ -5,8 +5,16 @@
     <title>my website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "{% static 'js/three/three.module.js' %}"
+        }
+      }
+    </script>
   </head>
   <body>
+    <div class="welcome__background"></div>
     {% include 'partials/nav.html' %}
     {% include 'partials/welcome_scroll_graphic.html' %}
     <script>
@@ -42,4 +50,5 @@
       })
     </script>
   </body>
+  <script type="module" src="{% static 'js/main.js' %}"></script>
 </html>
