@@ -7,8 +7,10 @@
 :root {
   --white: #f8efe6;
   --white-hover: #d8d1c9;
+  --white-trans: rgba(248, 239, 230, 0.75);
   --black: #171717;
   --black-hover: #404040;
+  --black-hover: rgba(23, 23, 23, 0.75);
 }
 
 /*
@@ -52,16 +54,50 @@ body {
 
 .nav__wrapper {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   z-index: 999;
 }
 
 .nav {
+  background-color: transparent;
+  backdrop-filter: blur(10px);
   position: relative;
   display: flex;
   height: 2.5rem;
   padding: 3rem 9rem 0 9rem;
   z-index: inherit;
+}
+
+@keyframes navSticky {
+  0% {
+    background-color: transparent;
+    padding: 3rem 9rem 0 9rem;
+  }
+  100% {
+    background-color: var(--white-trans);
+    padding: 1rem 9rem 1rem 9rem;
+  }
+}
+
+.nav__sticky {
+  animation: navSticky .2s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes navNotSticky {
+  0% {
+    background-color: var(--white-trans);
+    padding: 1rem 9rem 1rem 9rem;
+  }
+  100% {
+    background-color: transparent;
+    padding: 3rem 9rem 0 9rem;
+  }
+}
+
+.nav__not-sticky {
+  animation: navNotSticky .2s ease-in-out 0s 1 normal forwards;
 }
 
 .nav__link__container,
@@ -582,9 +618,6 @@ body {
 .welcome__scroll__graphic__from-dark {
   animation: welcomeScrollGraphic 2s ease-in-out 0s infinite normal forwards, welcomeScrollGraphicFromDark .2s ease-in-out 1 normal forwards;
 }
-
-
-
 
 @keyframes navDarkmodeIconToDark {
   0% {

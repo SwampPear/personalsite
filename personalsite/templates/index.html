@@ -45,8 +45,8 @@
           el.classList.remove('nav__link__to-dark')
           el.classList.add('nav__link__from-dark')
         })
-        document.querySelector('.welcome__scroll__graphic').classList.remove('welcome__scroll__graphic__to-dark')
-        document.querySelector('.welcome__scroll__graphic').classList.add('welcome__scroll__graphic__from-dark')
+        document.querySelector('.welcome__scroll__graphic__arrow').classList.remove('welcome__scroll__graphic__to-dark')
+        document.querySelector('.welcome__scroll__graphic__arrow').classList.add('welcome__scroll__graphic__from-dark')
         document.querySelector('.nav__darkmode-button__icon').classList.remove('nav__darkmode-button__icon__to-dark')
         document.querySelector('.nav__darkmode-button__icon').classList.add('nav__darkmode-button__icon__from-dark')
       }
@@ -80,6 +80,24 @@
       })
       document.querySelector('.nav__link__about').addEventListener('click', () => {
         scrolling.scrollToElement(scrolling.about)
+      })
+
+      let stickyNav = false
+
+      document.addEventListener('scroll', (event) => {
+        if (window.scrollY > 100 && !stickyNav) {
+          document.querySelector('.nav').classList.remove('nav__not-sticky')
+          document.querySelector('.nav').classList.add('nav__sticky')
+
+          stickyNav = true
+        }
+
+        if (window.scrollY <= 100 && stickyNav) {
+          document.querySelector('.nav').classList.remove('nav__sticky')
+          document.querySelector('.nav').classList.add('nav__not-sticky')
+          
+          stickyNav = false
+        }
       })
     
     </script>
