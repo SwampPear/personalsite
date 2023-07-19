@@ -196,6 +196,7 @@ float turbulence( vec3 p ) {
 
 }
 
+
 uniform vec3 uLightPos;
 
 varying vec3 vNormal;

@@ -3,7 +3,6 @@ import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 //import { BufferGeometryUtils } from 'three/addons/utils/BufferGeometryUtils.js';
 import pearVertexShader from 'shaders/pearVertexShader.js'
-import stemVertexShader from 'shaders/stemVertexShader.js'
 import fragmentShader from 'shaders/fragmentShader.js'
 
 
@@ -13,12 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // camera setup
   const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
-  camera.position.z = 5
-
-  // light setup
-  const light = new THREE.PointLight( 0x404040 )
-  light.position.z = 5
-  scene.add( light )
+  camera.position.y = 2
+  camera.lookAt(0, 0, 0)
 
   // renderer setup
   const renderer = new THREE.WebGLRenderer({antialias: true})
@@ -27,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderer.setPixelRatio( window.devicePixelRatio )
 
   // orbit setup
+  /*
   const controls = new OrbitControls( camera, renderer.domElement );
   controls.listenToKeyEvents( window ); // optional
 
@@ -40,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   controls.minDistance = 2;
   controls.maxDistance = 10;
 
-  controls.maxPolarAngle = Math.PI / 2;
+  controls.maxPolarAngle = Math.PI / 2;*/
 
   // attach renderer to DOM
   document.querySelector( '.welcome__background' ).appendChild( renderer.domElement )
@@ -54,8 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
       mouseY: {
         value: 0.0
       },
-      uColor: { 
-        value: new THREE.Color(0xe2e28b) 
+      uColor1: { 
+        value: new THREE.Color(0x8FCF55) 
+      },
+      uColor2: { 
+        value: new THREE.Color(0xC2BC5A) 
       },
       uLightPos: {
         value: new THREE.Vector3(0, 0, 5) // position of spotlight
@@ -68,31 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
     vertexShader: pearVertexShader,
-    fragmentShader: fragmentShader
-  })
-
-  const stemMaterial = new THREE.ShaderMaterial( {
-    uniforms: {
-      time: { // float initialized to 0
-        value: 0.0
-      },
-      mouseY: {
-        value: 0.0
-      },
-      uColor: { 
-        value: new THREE.Color(0x956f4f) 
-      },
-      uLightPos: {
-        value: new THREE.Vector3(0, 0, 5) // position of spotlight
-      },
-      uLightColor: {
-        value: new THREE.Color(0xffffff) // default light color
-      },
-      uLightIntensity: {
-        value: 0.7 // light intensity
-      }
-    },
-    vertexShader: stemVertexShader,
     fragmentShader: fragmentShader
   })
 
@@ -117,14 +91,6 @@ loader.load('static/obj/pear.obj', function(object, materials) {
         meshes.push(mesh)
 
         pearFound = true
-      } else {
-        const mesh = new THREE.Mesh(
-          child.geometry,
-          stemMaterial
-        )
-
-        //scene.add(mesh)
-        //meshes.push(mesh)
       }
     }
   });
@@ -138,7 +104,6 @@ const animate = () => {
     requestAnimationFrame(animate)
 
     pearMaterial.uniforms['time'].value = .000125 * ( Date.now() - start )
-    stemMaterial.uniforms['time'].value = .000125 * ( Date.now() - start )
     
     renderer.render( scene, camera )
 }
@@ -147,6 +112,5 @@ animate()
 
 addEventListener('mousemove', (event) => {
   pearMaterial.uniforms['mouseY'].value = event.screenY * 0.05
-  stemMaterial.uniforms['mouseY'].value = event.screenY * 0.05
 })
 })
