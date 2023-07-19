@@ -5,6 +5,7 @@
     <title>my website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <script src="{% static 'js/scrolling.js' %}"></script>
     <script type="importmap">
       {
         "imports": {
@@ -19,6 +20,7 @@
     <div class="welcome__background"></div>
     {% include 'partials/nav.html' %}
     {% include 'partials/welcome_scroll_graphic.html' %}
+    {% include 'partials/about.html' %}
     <script>
       // remove fade in animations
       ['nav__link__home', 'nav__link__about', 'nav__link__work', 'nav__link__contact'].forEach(selector => {
@@ -69,6 +71,17 @@
       darkmodeButton.addEventListener('click', () => {
         darkmode ? fromDark() : toDark()
       })
+
+      // scrolling
+      const scrolling = new Scrolling()
+
+      document.querySelector('.nav__link__home').addEventListener('click', () => {
+        scrolling.scrollToElement(scrolling.welcome)
+      })
+      document.querySelector('.nav__link__about').addEventListener('click', () => {
+        scrolling.scrollToElement(scrolling.about)
+      })
+    
     </script>
   </body>
   <script type="module" src="{% static 'js/main.js' %}"></script>

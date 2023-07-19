@@ -53,6 +53,7 @@ body {
 .nav__wrapper {
   position: fixed;
   width: 100%;
+  z-index: 999;
 }
 
 .nav {
@@ -60,6 +61,7 @@ body {
   display: flex;
   height: 2.5rem;
   padding: 3rem 9rem 0 9rem;
+  z-index: inherit;
 }
 
 .nav__link__container,
@@ -85,7 +87,6 @@ body {
   animation-timing-function: ease-in-out;
   background-color: transparent;
   border: none;
-  cursor: pointer;
   margin-right: 1.5rem;
   padding: 0;
 }
@@ -104,11 +105,13 @@ body {
 
 .nav__link:hover {
   color: var(--black-hover);
+  cursor: pointer;
 }
 
 .nav__link:after {
   display: block;
   content: '';
+  cursor: pointer;
   border-bottom: solid 2px var(--black);  
   border-radius: 1px;
   transform: scaleX(0);  
@@ -137,6 +140,10 @@ body {
   height: 2rem;
   margin-right: 1.5rem;
   transition: .2s ease-in-out;;
+}
+
+.nav__link__brand:hover {
+  cursor: pointer;
 }
 
 .nav__link__brand:hover > svg {
@@ -402,8 +409,34 @@ body {
  * =============================================================================
  */
 .welcome__background {
+  opacity: 0;
   position: absolute;
-  z-index: -1;
+  z-index: 998;
+}
+
+@keyframes welcomeBackgroundFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.welcome__background__fade-in {
+  animation: welcomeBackgroundFadeIn 2s ease-in-out 0s 1 normal forwards;
+}
+
+/*
+ * =============================================================================
+ * About
+ * =============================================================================
+ */
+.about__wrapper {
+  height: 100vh;
+  position: absolute;
+  top: 100vh;
+  width: 100vw;
 }
 
 /*

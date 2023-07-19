@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         value: 0.0
       },
       uColor1: { 
-        value: new THREE.Color(0x2d959) 
+        value: new THREE.Color(0xC2D959) 
       },
       uColor2: { 
         value: new THREE.Color(0xc2bc5a) 
@@ -60,8 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     object.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         if (!pearFound) {
-          //const merged = THREE.BufferGeometryUtils.mergeVertices(child.geometry)
-
           const mesh = new THREE.Mesh(
             child.geometry.toNonIndexed(),
             material
@@ -70,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
           scene.add(mesh)
 
           pearFound = true
+
+          // fade in DOM
+          document.querySelector( '.welcome__background' ).classList.add( 'welcome__background__fade-in' )
         }
       }
     });
