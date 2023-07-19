@@ -1,61 +1,152 @@
 import * as THREE from 'three';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+//import { BufferGeometryUtils } from 'three/addons/utils/BufferGeometryUtils.js';
+import pearVertexShader from 'shaders/pearVertexShader.js'
+import stemVertexShader from 'shaders/stemVertexShader.js'
+import fragmentShader from 'shaders/fragmentShader.js'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // setup
+  // scene setup
   const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
 
+  // camera setup
+  const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
+  camera.position.z = 5
+
+  // light setup
+  const light = new THREE.PointLight( 0x404040 )
+  light.position.z = 5
+  scene.add( light )
+
+  // renderer setup
   const renderer = new THREE.WebGLRenderer({antialias: true})
   renderer.setSize( window.innerWidth, window.innerHeight )
   renderer.setClearColor( 0x000000, 0 )
+  renderer.setPixelRatio( window.devicePixelRatio )
 
-  const RENDER = document.querySelector( '.welcome__background' )
-  RENDER.appendChild( renderer.domElement )
+  // orbit setup
+  const controls = new OrbitControls( camera, renderer.domElement );
+  controls.listenToKeyEvents( window ); // optional
 
+  //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
 
-  //const geometry = new THREE.BoxGeometry( 1, 1, 1 )
-  //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
-  //const cube = new THREE.Mesh( geometry, material )
-  //scene.add( cube )
+  controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+  controls.dampingFactor = 0.05;
 
-  camera.position.z = 5
+  controls.screenSpacePanning = false;
 
-  const light = new THREE.PointLight()
-  scene.add(light)
+  controls.minDistance = 2;
+  controls.maxDistance = 10;
 
-  var oLoader = new OBJLoader();
-  oLoader.load('static/obj/pear.obj', function(object, materials) {
+  controls.maxPolarAngle = Math.PI / 2;
 
-  // var material = new THREE.MeshFaceMaterial(materials);
-  var material2 = new THREE.MeshLambertMaterial({ color: 0xa65e00 });
+  // attach renderer to DOM
+  document.querySelector( '.welcome__background' ).appendChild( renderer.domElement )
 
-  object.traverse( function(child) {
-  if (child instanceof THREE.Mesh) {
+  // define material
+  const pearMaterial = new THREE.ShaderMaterial( {
+    uniforms: {
+      time: { // float initialized to 0
+        value: 0.0
+      },
+      mouseY: {
+        value: 0.0
+      },
+      uColor: { 
+        value: new THREE.Color(0xe2e28b) 
+      },
+      uLightPos: {
+        value: new THREE.Vector3(0, 0, 5) // position of spotlight
+      },
+      uLightColor: {
+        value: new THREE.Color(0xffffff) // default light color
+      },
+      uLightIntensity: {
+        value: 0.7 // light intensity
+      }
+    },
+    vertexShader: pearVertexShader,
+    fragmentShader: fragmentShader
+  })
 
-    // apply custom material
-    child.material = material2;
+  const stemMaterial = new THREE.ShaderMaterial( {
+    uniforms: {
+      time: { // float initialized to 0
+        value: 0.0
+      },
+      mouseY: {
+        value: 0.0
+      },
+      uColor: { 
+        value: new THREE.Color(0x956f4f) 
+      },
+      uLightPos: {
+        value: new THREE.Vector3(0, 0, 5) // position of spotlight
+      },
+      uLightColor: {
+        value: new THREE.Color(0xffffff) // default light color
+      },
+      uLightIntensity: {
+        value: 0.7 // light intensity
+      }
+    },
+    vertexShader: stemVertexShader,
+    fragmentShader: fragmentShader
+  })
 
-    // enable casting shadows
-    child.castShadow = true;
-    child.receiveShadow = true;
+// define geometry and add to scene
+let pearFound = false
+const meshes = []
+
+let loader = new OBJLoader();
+
+loader.load('static/obj/pear.obj', function(object, materials) {
+  object.traverse((child) => {
+    if (child instanceof THREE.Mesh) {
+      if (!pearFound) {
+        //const merged = THREE.BufferGeometryUtils.mergeVertices(child.geometry)
+
+        const mesh = new THREE.Mesh(
+          child.geometry.toNonIndexed(),
+          pearMaterial
+        )
+
+        scene.add(mesh)
+        meshes.push(mesh)
+
+        pearFound = true
+      } else {
+        const mesh = new THREE.Mesh(
+          child.geometry,
+          stemMaterial
+        )
+
+        //scene.add(mesh)
+        //meshes.push(mesh)
+      }
     }
-    });
-
-    object.position.x = 0;
-  object.position.y = 0;
-  object.position.z = -5;
-  object.scale.set(1, 1, 1);
-  scene.add(object);
   });
+});
 
-  // animation
-  const animate = () => {
-    requestAnimationFrame( animate )
-    //cube.rotation.x += 0.01
-    //cube.rotation.y += 0.01
+
+// animation
+let start = Date.now()
+
+const animate = () => {
+    requestAnimationFrame(animate)
+
+    pearMaterial.uniforms['time'].value = .000125 * ( Date.now() - start )
+    stemMaterial.uniforms['time'].value = .000125 * ( Date.now() - start )
+    
     renderer.render( scene, camera )
-  }
-  animate()
+}
+
+animate()
+
+addEventListener('mousemove', (event) => {
+  pearMaterial.uniforms['mouseY'].value = event.screenY * 0.05
+  stemMaterial.uniforms['mouseY'].value = event.screenY * 0.05
+})
 })
