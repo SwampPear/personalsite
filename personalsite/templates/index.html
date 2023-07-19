@@ -8,7 +8,8 @@
     <script type="importmap">
       {
         "imports": {
-          "three": "{% static 'js/three/three.module.js' %}"
+          "three": "{% static 'js/three/three.module.js' %}",
+          "three/addons/": "{% static 'js/three/jsm/' %}"
         }
       }
     </script>
@@ -66,7 +67,6 @@
 
       darkmodeButton.addEventListener('click', () => {
         darkmode ? fromDark() : toDark()
-        
       })
     </script>
   </body>
