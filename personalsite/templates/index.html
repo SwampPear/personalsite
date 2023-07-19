@@ -18,6 +18,14 @@
     {% include 'partials/nav.html' %}
     {% include 'partials/welcome_scroll_graphic.html' %}
     <script>
+      // remove fade in animations
+      ['nav__link__home', 'nav__link__about', 'nav__link__work', 'nav__link__contact'].forEach(selector => {
+        document.querySelector(`.${selector}`).addEventListener('animationend', () => {
+          document.querySelector(`.${selector}`).classList.remove(selector)
+        })
+      })
+    
+      // darkmode
       let darkmode = false 
 
       const darkmodeButton = document.querySelector('.nav__darkmode-button')
@@ -27,10 +35,16 @@
 
         document.body.classList.remove('body-to-dark')
         document.body.classList.add('body-from-dark')
+        document.querySelector('.nav__link__brand').classList.remove('nav__link__to-dark')
+        document.querySelector('.nav__link__brand').classList.add('nav__link__from-dark')
         document.querySelectorAll('.nav__link').forEach((el) => {
           el.classList.remove('nav__link__to-dark')
           el.classList.add('nav__link__from-dark')
         })
+        document.querySelector('.welcome__scroll__graphic').classList.remove('welcome__scroll__graphic__to-dark')
+        document.querySelector('.welcome__scroll__graphic').classList.add('welcome__scroll__graphic__from-dark')
+        document.querySelector('.nav__darkmode-button__icon').classList.remove('nav__darkmode-button__icon__to-dark')
+        document.querySelector('.nav__darkmode-button__icon').classList.add('nav__darkmode-button__icon__from-dark')
       }
 
       const toDark = () => {
@@ -38,10 +52,16 @@
 
         document.body.classList.remove('body-from-dark')
         document.body.classList.add('body-to-dark')
+        document.querySelector('.nav__link__brand').classList.remove('nav__link__from-dark')
+        document.querySelector('.nav__link__brand').classList.add('nav__link__to-dark')
         document.querySelectorAll('.nav__link').forEach((el) => {
           el.classList.remove('nav__link__from-dark')
           el.classList.add('nav__link__to-dark')
         })
+        document.querySelector('.welcome__scroll__graphic__arrow').classList.remove('welcome__scroll__graphic__from-dark')
+        document.querySelector('.welcome__scroll__graphic__arrow').classList.add('welcome__scroll__graphic__to-dark')
+        document.querySelector('.nav__darkmode-button__icon').classList.remove('nav__darkmode-button__icon__from-dark')
+        document.querySelector('.nav__darkmode-button__icon').classList.add('nav__darkmode-button__icon__to-dark')
       }
 
       darkmodeButton.addEventListener('click', () => {

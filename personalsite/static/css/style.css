@@ -96,7 +96,7 @@ body {
   font-family: 'IBM Plex Mono';
   font-size: 1.125rem;
   text-decoration: none;
-  opacity: 0;
+  opacity: 1;
   will-change: transform;
   transition: .2s ease-in-out;
   height: 2rem;
@@ -127,7 +127,7 @@ body {
   font-family: 'IBM Plex Mono';
   font-size: 1.125rem;
   text-decoration: none;
-  opacity: 0;
+  opacity: 1;
   will-change: transform;
   transition: .2s ease-in-out;
   justify-content: center;
@@ -145,6 +145,10 @@ body {
 
 
 @keyframes navLinkHomeAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
   5% {
     opacity: 0;
     transform: translateY(-1rem);
@@ -164,7 +168,11 @@ body {
   height: 2rem;
 }
 
-@keyframes navLinkWorkAnim {
+@keyframes navLinkAboutAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
   10% {
     opacity: 0;
     transform: translateY(-1rem);
@@ -178,11 +186,15 @@ body {
   }
 }
 
-.nav__link__work {
-  animation-name: navLinkWorkAnim;
+.nav__link__about {
+  animation-name: navLinkAboutAnim;
 }
 
-@keyframes navLinkContactAnim {
+@keyframes navLinkWorkAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
   15% {
     opacity: 0;
     transform: translateY(-1rem);
@@ -200,12 +212,34 @@ body {
   animation-name: navLinkContactAnim;
 }
 
-@keyframes navDarkmodeButtonAnim {
-  15% {
+@keyframes navLinkContactAnim {
+  0% {
     opacity: 0;
     transform: translateY(-1rem);
   }
-  30% {
+  20% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.nav__link__work {
+  animation-name: navLinkWorkAnim;
+}
+
+@keyframes navDarkmodeButtonAnim {
+  20% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  35% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -352,10 +386,7 @@ body {
 }
 
 .welcome__scroll__graphic__arrow {
-  animation-name: welcomeScrollGraphic;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+  animation: welcomeScrollGraphic 2s ease-in-out 0s infinite normal forwards;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -363,7 +394,6 @@ body {
   height: 8rem;
   stroke: var(--black);
   stroke-dasharray: 100;
-  animation-iteration-count: infinite;
 }
 
 /*
@@ -375,8 +405,6 @@ body {
   position: absolute;
   z-index: -1;
 }
-
-
 
 /*
  * =============================================================================
@@ -469,3 +497,89 @@ body {
 .nav__link__to-dark:hover:after { 
   animation-name: navLinkToDarkHoverAfter;
 }
+
+@keyframes navLinkBrandToDark {
+  from {
+    color: var(--black);
+  }
+  to {
+    color: var(--white);
+  }
+}
+
+.nav__link__brand__to-dark {
+  animation-name: navLinkBrandToDark;
+}
+
+@keyframes navLinkBrandFromDark {
+  from {
+    color: var(--white);
+  }
+  to {
+    color: var(--black);
+  }
+}
+
+.nav__link__brand__from-dark {
+  animation-name: navLinkBrandFromDark;
+}
+
+@keyframes welcomeScrollGraphicToDark {
+  0% {
+    stroke: var(--black);
+  }
+  100% {
+    stroke: var(--white);
+  }
+}
+
+.welcome__scroll__graphic__to-dark {
+  animation: welcomeScrollGraphic 2s ease-in-out 0s infinite normal forwards, welcomeScrollGraphicToDark .2s ease-in-out 1 normal forwards;
+}
+
+@keyframes welcomeScrollGraphicFromDark {
+  0% {
+    stroke: var(--white);
+  }
+  100% {
+    stroke: var(--black);
+  }
+}
+
+.welcome__scroll__graphic__from-dark {
+  animation: welcomeScrollGraphic 2s ease-in-out 0s infinite normal forwards, welcomeScrollGraphicFromDark .2s ease-in-out 1 normal forwards;
+}
+
+
+
+
+@keyframes navDarkmodeIconToDark {
+  0% {
+    fill: var(--black);
+    stroke: var(--black);
+  }
+  100% {
+    fill: var(--white);
+    stroke: var(--white);
+  }
+}
+
+.nav__darkmode-button__icon__to-dark {
+  animation: navDarkmodeIconToDark .2s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes navDarkmodeIconFromDark {
+  0% {
+    fill: var(--white);
+    stroke: var(--white);
+  }
+  100% {
+    fill: var(--black);
+    stroke: var(--black);
+  }
+}
+
+.nav__darkmode-button__icon__from-dark {
+  animation: navDarkmodeIconFromDark .2s ease-in-out 0s 1 normal forwards;
+}
+
