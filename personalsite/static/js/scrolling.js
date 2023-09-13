@@ -2,8 +2,7 @@ class Scrolling {
   constructor() {
     this.welcome = document.querySelector('.welcome__background')
     this.about = document.querySelector('.about__wrapper')
-    this.work = document.querySelector('.nav__link__work')
-    this.contact = document.querySelector('.nav__link__contact')
+    this.work = document.querySelector('.work__wrapper')
     this.scrollDuration = 750
 
     this.selectedSection = 'welcome'

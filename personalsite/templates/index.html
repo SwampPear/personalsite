@@ -21,6 +21,7 @@
     {% include 'partials/nav.html' %}
     {% include 'partials/welcome_scroll_graphic.html' %}
     {% include 'partials/about.html' %}
+    {% include 'partials/work.html' %}
     <script>
       // remove fade in animations
       ['nav__link__home', 'nav__link__about', 'nav__link__work', 'nav__link__contact'].forEach(selector => {
@@ -80,6 +81,9 @@
       })
       document.querySelector('.nav__link__about').addEventListener('click', () => {
         scrolling.scrollToElement(scrolling.about)
+      })
+      document.querySelector('.nav__link__work').addEventListener('click', () => {
+        scrolling.scrollToElement(scrolling.work)
       })
 
       let stickyNav = false

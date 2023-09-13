@@ -139,9 +139,21 @@ body {
   height: 2rem;
 }
 
+.nav__link > a {
+  text-decoration: none;
+}
+
+.nav__link > a {
+  color: var(--black);
+}
+
 .nav__link:hover {
   color: var(--black-hover);
   cursor: pointer;
+}
+
+.nav__link:hover > a {
+  color: var(--black-hover);
 }
 
 .nav__link:after {
@@ -472,6 +484,18 @@ body {
   height: 100vh;
   position: absolute;
   top: 100vh;
+  width: 100vw;
+}
+
+/*
+ * =============================================================================
+ * Work
+ * =============================================================================
+ */
+ .work__wrapper {
+  height: 100vh;
+  position: absolute;
+  top: 200vh;
   width: 100vw;
 }
 
