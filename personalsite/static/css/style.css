@@ -30,6 +30,10 @@ body {
     margin: 0
 }
 
+.body {
+    background-color: var(--white);
+}
+
 .welcome__background {
     opacity: 0;
     position: absolute;
@@ -134,24 +138,7 @@ body {
   
 .nav__link:hover {
     cursor: pointer;
-}
-  
-.nav__link:hover > a {
-    color: inherit;
-}
-  
-.nav__link:after {
-    display: block;
-    content: '';
-    cursor: pointer;
-    border-bottom: solid 2px var(--black);  
-    border-radius: 1px;
-    transform: scaleX(0);  
-    transition: transform .2s ease-in-out;
-}
-  
-.nav__link:hover:after {
-    transform: scaleX(1); 
+    transform: scale(1.03);
 }
   
 .nav__link__brand {
