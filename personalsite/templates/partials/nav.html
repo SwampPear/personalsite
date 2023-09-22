@@ -33,9 +33,9 @@
   </div>
 </div>
 <script>
-  ['nav__link__home', 'nav__link__about', 'nav__link__work', 'nav__link__contact'].forEach(selector => {
-  document.querySelector(`.${selector}`).addEventListener('animationend', () => {
-    document.querySelector(`.${selector}`).classList.remove(selector)
-  })
+['nav__link__home', 'nav__link__about', 'nav__link__work', 'nav__link__contact'].forEach(selector => {
+    document.querySelector(`.${selector}`).addEventListener('animationend', () => {
+        document.querySelector(`.${selector}`).classList.remove(selector)
+    })
 })
 </script>
