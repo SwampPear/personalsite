@@ -49,3 +49,614 @@ body {
 .welcome__background__fade-in {
     animation: welcomeBackgroundFadeIn 2s ease-in-out 0s 1 normal forwards;
 }
+
+.nav__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+  
+.nav {
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    position: relative;
+    display: flex;
+    height: 2.5rem;
+    padding: 3rem 9rem 0 9rem;
+    z-index: inherit;
+}
+
+.nav__link__container,
+.nav__darkmode__container {
+  align-items: center;
+  display: flex;
+  flex: auto;
+}
+
+.nav {
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    position: relative;
+    display: flex;
+    height: 2.5rem;
+    padding: 3rem 9rem 0 9rem;
+    z-index: inherit;
+}
+    
+.nav__link__container {
+    justify-content: left;
+}
+  
+.nav__darkmode__container {
+    justify-content: right;
+}
+
+.nav__link__home,
+.nav__link__about,
+.nav__link__work,
+.nav__link__contact,
+.nav__darkmode-button {
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.nav__link__brand,
+.nav__link {
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    background-color: transparent;
+    border: none;
+    margin-right: 1.5rem;
+    padding: 0;
+}
+
+.nav__link {
+    color: var(--black);
+    display: block;
+    font-family: 'IBM Plex Mono';
+    font-size: 1.125rem;
+    text-decoration: none;
+    will-change: transform;
+    transition: .2s ease-in-out;
+    height: 2rem;
+}
+  
+.nav__link > a {
+    text-decoration: none;
+}
+  
+.nav__link > a {
+    color: var(--black);
+}
+  
+.nav__link:hover {
+    color: var(--black-hover);
+    cursor: pointer;
+}
+  
+.nav__link:hover > a {
+    color: var(--black-hover);
+}
+  
+.nav__link:after {
+    display: block;
+    content: '';
+    cursor: pointer;
+    border-bottom: solid 2px var(--black);  
+    border-radius: 1px;
+    transform: scaleX(0);  
+    transition: transform .2s ease-in-out;
+}
+  
+.nav__link:hover:after { 
+    border-bottom: solid 2px var(--black-hover);
+    transform: scaleX(1); 
+}
+  
+  .nav__link__brand {
+    align-items: center;
+    color: var(--black);
+    display: flex;
+    font-family: 'IBM Plex Mono';
+    font-size: 1.125rem;
+    text-decoration: none;
+    opacity: 1;
+    will-change: transform;
+    transition: .2s ease-in-out;
+    justify-content: center;
+  }
+  
+  .nav__link__brand > svg {
+    height: 2rem;
+    margin-right: 1.5rem;
+    transition: .2s ease-in-out;;
+  }
+  
+  .nav__link__brand:hover {
+    cursor: pointer;
+  }
+  
+  .nav__link__brand:hover > svg {
+    transform: scale(1.1);
+  }
+  
+  
+  @keyframes navLinkHomeAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    5% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+  }
+  
+  .nav__link__home {
+    animation-name: navLinkHomeAnim;
+    height: 2rem;
+  }
+  
+  @keyframes navLinkAboutAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    10% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    25% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .nav__link__about {
+    animation-name: navLinkAboutAnim;
+  }
+  
+  @keyframes navLinkWorkAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    15% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    30% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .nav__link__contact {
+    animation-name: navLinkContactAnim;
+  }
+  
+  @keyframes navLinkContactAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    20% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    35% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .nav__link__work {
+    animation-name: navLinkWorkAnim;
+  }
+  
+  @keyframes navDarkmodeButtonAnim {
+    20% {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    35% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .nav__darkmode-button {
+    animation-name: navDarkmodeButtonAnim;
+    background-color: transparent;
+    border: none;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    height: 2.5rem;
+    opacity: 0;
+    padding: 0;
+    width: 2.5;
+  }
+  
+  .nav__darkmode-button__icon {
+    fill: var(--black);
+    stroke: var(--black);
+    height: 2.5rem;
+    transition: .1s ease-in-out;
+    will-change: transform;
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__circle {
+    transform: scale(1.2);
+  }
+  
+  .nav__darkmode-button__icon__circle {
+    stroke-width: 0;
+    transform-origin: center;
+    transition: .2s ease-in-out;
+  }
+  
+  .nav__darkmode-button__icon__ray1,
+  .nav__darkmode-button__icon__ray2,
+  .nav__darkmode-button__icon__ray3,
+  .nav__darkmode-button__icon__ray4,
+  .nav__darkmode-button__icon__ray5,
+  .nav__darkmode-button__icon__ray6,
+  .nav__darkmode-button__icon__ray7,
+  .nav__darkmode-button__icon__ray8 {
+    stroke-linecap: round;
+    stroke-width: 4px;
+    transition: .2s ease-in-out;
+  }
+  
+  .nav__darkmode-button__icon__ray1 {
+    d: path("M5 50 L17 50")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray1 {
+    d: path("M5 50 L9 50")
+  }
+  
+  .nav__darkmode-button__icon__ray2 {
+    d: path("M50 5 L50 17")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray2 {
+    d: path("M50 5 L50 9")
+  }
+  
+  .nav__darkmode-button__icon__ray3 {
+    d: path("M95 50 L83 50")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray3 {
+    d: path("M95 50 L91 50")
+  }
+  
+  .nav__darkmode-button__icon__ray4 {
+    d: path("M50 95 L50 83")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray4 {
+    d: path("M50 95 L50 91")
+  }
+  
+  .nav__darkmode-button__icon__ray5 {
+    d: path("M18.18 18.18 L25.35 25.35")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray5 {
+    d: path("M18.18 18.18 L20.25 20.25")
+  }
+  
+  .nav__darkmode-button__icon__ray6 {
+    d: path("M81.82 18.18 L74.65 25.35")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray6 {
+    d: path("M81.82 18.18 L79.75 20.25")
+  }
+  
+  .nav__darkmode-button__icon__ray7 {
+    d: path("M81.82 81.82 L74.65 74.65")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray7 {
+    d: path("M81.82 81.82 L79.75 79.75")
+  }
+  
+  .nav__darkmode-button__icon__ray8 {
+    d: path("M18.18 81.82 L25.35 74.65")
+  }
+  
+  .nav__darkmode-button__icon:hover > .nav__darkmode-button__icon__ray8 {
+    d: path("M18.18 81.82 L20.25 79.75")
+  }
+  
+  /*
+   * =============================================================================
+   * Welcome Scroll Graphic
+   * =============================================================================
+   */
+  .welcome__scroll__graphic__container {
+    bottom: 0;
+    right: 0;
+    display: flex;
+    height: 8rem;
+    padding: 0 9.65rem 3rem 0;
+    position: absolute;
+  }
+  
+  .welcome__scroll__graphic {
+    height: 8rem;
+  }
+  
+  @keyframes welcomeScrollGraphic {
+    0% {
+      stroke-dashoffset: 100;
+    }
+    50% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -100;
+    }
+  }
+  
+  .welcome__scroll__graphic__arrow {
+    animation: welcomeScrollGraphic 2s ease-in-out 0s infinite normal forwards;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    height: 8rem;
+    stroke: var(--black);
+    stroke-dasharray: 100;
+  }
+  
+  /*
+   * =============================================================================
+   * Background
+   * =============================================================================
+   */
+  .welcome__background {
+    opacity: 0;
+    position: absolute;
+    z-index: 998;
+  }
+  
+  @keyframes welcomeBackgroundFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .welcome__background__fade-in {
+    animation: welcomeBackgroundFadeIn 2s ease-in-out 0s 1 normal forwards;
+  }
+  
+  /*
+   * =============================================================================
+   * About
+   * =============================================================================
+   */
+  .about__wrapper {
+    height: 100vh;
+    position: absolute;
+    top: 100vh;
+    width: 100vw;
+  }
+  
+  /*
+   * =============================================================================
+   * Work
+   * =============================================================================
+   */
+   .work__wrapper {
+    height: 100vh;
+    position: absolute;
+    top: 200vh;
+    width: 100vw;
+  }
+  
+  /*
+   * =============================================================================
+   * Darkmode
+   * =============================================================================
+   */
+  
+  .body-to-dark,
+  .body-from-dark,
+  .nav__link__to-dark {
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  @keyframes bodyToDark {
+    from {
+      background-color: var(--white);
+    }
+    to {
+      background-color: var(--black);
+    }
+  }
+  
+  .body-to-dark {
+    animation-name: bodyToDark;
+  }
+  
+  @keyframes bodyFromDark {
+    from {
+      background-color: var(--black);
+    }
+    to {
+      background-color: var(--white);
+    }
+  }
+  
+  .body-from-dark {
+    animation-name: bodyFromDark;
+  }
+  
+  @keyframes navLinkToDark {
+    from {
+      color: var(--black);
+    }
+    to {
+      color: var(--white);
+    }
+  }
+  
+  @keyframes navLinkToDarkHover {
+    from {
+      color: var(--black-hover);
+    }
+    to {
+      color: var(--white-hover);
+    }
+  }
+  
+  @keyframes navLinkToDarkAfter {
+    from {
+      border-bottom: solid 2px var(--black); 
+    }
+    to {
+      border-bottom: solid 2px var(--white); 
+    }
+  }
+  
+  @keyframes navLinkToDarkHoverAfter {
+    from {
+      border-bottom: solid 2px var(--black-hover);
+    }
+    to {
+      border-bottom: solid 2px var(--white-hover);
+    }
+  }
+  
+  .nav__link__to-dark {
+    animation-name: navLinkToDark;
+  }
+  
+  .nav__link__to-dark:hover {
+    animation-name: navLinkToDarkHover;
+  }
+  
+  .nav__link__to-dark:after {
+    animation-name: navLinkToDarkAfter;
+  }
+  
+  .nav__link__to-dark:hover:after { 
+    animation-name: navLinkToDarkHoverAfter;
+  }
+  
+  @keyframes navLinkBrandToDark {
+    from {
+      color: var(--black);
+    }
+    to {
+      color: var(--white);
+    }
+  }
+  
+  .nav__link__brand__to-dark {
+    animation-name: navLinkBrandToDark;
+  }
+  
+  @keyframes navLinkBrandFromDark {
+    from {
+      color: var(--white);
+    }
+    to {
+      color: var(--black);
+    }
+  }
+  
+  .nav__link__brand__from-dark {
+    animation-name: navLinkBrandFromDark;
+  }
+  
+  @keyframes welcomeScrollGraphicToDark {
+    0% {
+      stroke: var(--black);
+    }
+    100% {
+      stroke: var(--white);
+    }
+  }
+  
+  .welcome__scroll__graphic__to-dark {
+    animation: welcomeScrollGraphic 2s ease-in-out 0s infinite normal forwards, welcomeScrollGraphicToDark .2s ease-in-out 1 normal forwards;
+  }
+  
+  @keyframes welcomeScrollGraphicFromDark {
+    0% {
+      stroke: var(--white);
+    }
+    100% {
+      stroke: var(--black);
+    }
+  }
+  
+  .welcome__scroll__graphic__from-dark {
+    animation: welcomeScrollGraphic 2s ease-in-out 0s infinite normal forwards, welcomeScrollGraphicFromDark .2s ease-in-out 1 normal forwards;
+  }
+  
+  @keyframes navDarkmodeIconToDark {
+    0% {
+      fill: var(--black);
+      stroke: var(--black);
+    }
+    100% {
+      fill: var(--white);
+      stroke: var(--white);
+    }
+  }
+  
+  .nav__darkmode-button__icon__to-dark {
+    animation: navDarkmodeIconToDark .2s ease-in-out 0s 1 normal forwards;
+  }
+  
+  @keyframes navDarkmodeIconFromDark {
+    0% {
+      fill: var(--white);
+      stroke: var(--white);
+    }
+    100% {
+      fill: var(--black);
+      stroke: var(--black);
+    }
+  }
+  
+  .nav__darkmode-button__icon__from-dark {
+    animation: navDarkmodeIconFromDark .2s ease-in-out 0s 1 normal forwards;
+  }
+  
+  

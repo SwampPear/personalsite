@@ -9,15 +9,15 @@
         <script type="importmap">
             {
                 "imports": {
-                "three": "{% static 'js/three/three.module.js' %}",
-                "three/addons/": "{% static 'js/three/jsm/' %}",
-                "shaders/": "{% static 'js/shaders/' %}"
+                    "three": "{% static 'js/three/three.module.js' %}",
+                    "three/addons/": "{% static 'js/three/jsm/' %}",
+                    "shaders/": "{% static 'js/shaders/' %}"
                 }
             }
         </script>
     </head>
     <body>
+        {% include 'partials/nav.html' %}
         {% include 'partials/welcome.html' %}
     </body>
-    <script type="module" src="{% static 'js/welcome_graphic.js' %}"></script>
 </html>

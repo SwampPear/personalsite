@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // define material
     const material = new THREE.ShaderMaterial( {
         uniforms: {
-            time: { // float initialized to 0
+            time: {
                 value: 0.0
             },
             mouseY: {

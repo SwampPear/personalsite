@@ -1,0 +1,41 @@
+<div class="nav__wrapper">
+  <div class="nav">
+    <div class="nav__link__container">
+      <div class="nav__link__home">
+        <button class="nav__link__brand">
+          {% include 'partials/svg/pear.html' %}
+          Michael Vaden
+        </button>
+      </div>
+      <div class="nav__link__about">
+        <button class="nav__link">
+          about
+        </button>
+      </div>
+      <div class="nav__link__work">
+        <button class="nav__link">
+          work
+        </button>
+      </div>
+      <div class="nav__link__contact">
+        <button class="nav__link">
+          <a href="mailto: michaeljosephvaden03@gmail.com">
+            contact
+          </a>
+        </button>
+      </div>
+    </div>
+    <div class="nav__darkmode__container">
+      <button class="nav__darkmode-button">
+        {% include 'partials/svg/darkmode.html' %}
+      </button>
+    </div>
+  </div>
+</div>
+<script>
+  ['nav__link__home', 'nav__link__about', 'nav__link__work', 'nav__link__contact'].forEach(selector => {
+  document.querySelector(`.${selector}`).addEventListener('animationend', () => {
+    document.querySelector(`.${selector}`).classList.remove(selector)
+  })
+})
+</script>
