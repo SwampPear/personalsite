@@ -27,7 +27,6 @@
 
 html,
 body {
-    background-color: var(--white);
     margin: 0
 }
 
@@ -130,16 +129,15 @@ body {
 }
   
 .nav__link > a {
-    color: var(--black);
+    color: inherit;
 }
   
 .nav__link:hover {
-    color: var(--black-hover);
     cursor: pointer;
 }
   
 .nav__link:hover > a {
-    color: var(--black-hover);
+    color: inherit;
 }
   
 .nav__link:after {
@@ -152,8 +150,7 @@ body {
     transition: transform .2s ease-in-out;
 }
   
-.nav__link:hover:after { 
-    border-bottom: solid 2px var(--black-hover);
+.nav__link:hover:after {
     transform: scaleX(1); 
 }
   
@@ -396,11 +393,49 @@ body {
     d: path("M18.18 81.82 L20.25 79.75")
 }
 
-  /*
-   * =============================================================================
-   * Darkmode
-   * =============================================================================
-   */
+.darkmode { 
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bodyToDarkmode {
+    from { background-color: var(--white); }
+    to { background-color: var(--black); }
+}
+
+.body__to-darkmode {
+    animation-name: bodyToDarkmode;
+}
+
+@keyframes bodyFromDarkmode {
+    from { background-color: var(--black); }
+    to { background-color: var(--white); }
+}
+
+.body__from-darkmode {
+    animation-name: bodyFromDarkmode;
+}
+
+@keyframes navLinkToDarkmode {
+    from { color: var(--black); }
+    to { color: var(--white); }
+}
+
+.nav__link__to-darkmode {
+    animation-name: navLinkToDarkmode;
+}
+
+@keyframes navLinkFromDarkmode {
+  from { color: var(--white); }
+  to { color: var(--black); }
+}
+
+.nav__link__from-darkmode {
+    animation-name: navLinkFromDarkmode;
+}
+
+/*
   
   .body-to-dark,
   .body-from-dark,
@@ -570,4 +605,4 @@ body {
     animation: navDarkmodeIconFromDark .2s ease-in-out 0s 1 normal forwards;
   }
   
-  
+  */
