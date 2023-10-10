@@ -138,7 +138,6 @@ body {
   
 .nav__link:hover {
     cursor: pointer;
-    transform: scale(1.03);
 }
   
 .nav__link__brand {
@@ -420,6 +419,36 @@ body {
 
 .nav__link__from-darkmode {
     animation-name: navLinkFromDarkmode;
+}
+
+@keyframes navDarkmodeButtonToDarkmode {
+  from { 
+    fill: var(--black);
+    stroke: var(--black);
+  }
+  to { 
+    fill: var(--white);
+    stroke: var(--white);
+  }
+}
+
+.nav__darkmode-button__icon__to-darkmode {
+    animation-name: navDarkmodeButtonToDarkmode;
+}
+
+@keyframes navDarkmodeButtonFromDarkmode {
+  from { 
+    fill: var(--white);
+    stroke: var(--white);
+  }
+  to { 
+    fill: var(--black);
+    stroke: var(--black);
+  }
+}
+
+.nav__darkmode-button__icon__from-darkmode {
+  animation-name: navDarkmodeButtonFromDarkmode;
 }
 
 /*

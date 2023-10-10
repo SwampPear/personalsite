@@ -5,6 +5,7 @@ const darkModeButton = document.querySelector( '.nav__darkmode-button' )
 const body = document.querySelector( 'body' )
 const navLinkBrand = document.querySelector( '.nav__link__brand' )
 const navLinks = document.querySelectorAll( '.nav__link' )
+const navDarkmodeButtonIcon = document.querySelector('.nav__darkmode-button__icon')
 
 
 const toDarkMode = () => {
@@ -18,6 +19,9 @@ const toDarkMode = () => {
         elem.classList.remove( 'nav__link__from-darkmode' )
         elem.classList.add( 'nav__link__to-darkmode' )
     })
+
+    navDarkmodeButtonIcon.classList.remove( 'nav__darkmode-button__icon__from-darkmode' )
+    navDarkmodeButtonIcon.classList.add( 'nav__darkmode-button__icon__to-darkmode' )
 }
 
 const fromDarkMode = () => {
@@ -31,6 +35,9 @@ const fromDarkMode = () => {
         elem.classList.remove( 'nav__link__to-darkmode' )
         elem.classList.add( 'nav__link__from-darkmode' )
     })
+
+    navDarkmodeButtonIcon.classList.remove( 'nav__darkmode-button__icon__to-darkmode' )
+    navDarkmodeButtonIcon.classList.add( 'nav__darkmode-button__icon__from-darkmode' )
 }
 
 const toggleDarkmode = () => {
