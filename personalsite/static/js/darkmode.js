@@ -43,20 +43,15 @@ const fromDarkMode = () => {
 const toggleDarkmode = () => {
     if ( !darkMode ) {
         toDarkMode()
-
         darkMode = true
     } else {
         fromDarkMode()
-
         darkMode = false
     }
 }
 
-darkModeButton.addEventListener( 'click', toggleDarkmode)
 
-/*
-- body
-- link buttons
-- darkmode button
 
-*/
+document.addEventListener('DOMContentLoaded', () => {
+    darkModeButton.addEventListener( 'click', toggleDarkmode )
+})
